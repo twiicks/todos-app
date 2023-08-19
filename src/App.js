@@ -12,16 +12,33 @@ const defaultTodos=[
   {text:'Watch Platzi',completed:true},
   {text:'Write something',completed:false},
   {text:'Buya a candy',completed:false},
-  {text:'Sleep 12 hours',completed:false}
+  {text:'Sleep 12 hours',completed:false},
+  {text:'Use a derivated state',completed:true}
 ];
 
 function App() {
+  const [searchValue, setSearchValue]=React.useState('');
+
+  const [todos, setTodos]=React.useState(defaultTodos);
+
+  let completedTodos=todos.filter(todo=>todo.completed).length;
+
+  let totalTodos=todos.length;
+
+  const searchedTodos=todos.filter((todo)=>{
+    return todo.text.includes(searchValue)
+  })
+
+
   return (
     <React.Fragment>
-      <TodoCounter completed={4} total={7}/>
-      <TodoSearch/>
+      <TodoCounter completed={completedTodos} total={totalTodos}/>
+      <TodoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
       <TodoList>
-        {defaultTodos.map(todo=>{
+        {searchedTodos.map(todo=>{
           return (
             <TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
           )
