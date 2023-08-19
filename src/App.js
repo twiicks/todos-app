@@ -1,15 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import {TodoCounter} from './TodoCounter';
+import {TodoSearch} from './TodoSearch';
+import {TodoList} from './TodoList';
+import {TodoItem} from './TodoItem';
+import {CreateTodoItem} from './CreateTodoItem';
+import React from 'react';
+
+const defaultTodos=[
+  {text:'Have Lunch',completed:true},
+  {text:'Learn React',completed:true},
+  {text:'Play FIFA',completed:true},
+  {text:'Watch Platzi',completed:true},
+  {text:'Write something',completed:false},
+  {text:'Buya a candy',completed:false},
+  {text:'Sleep 12 hours',completed:false}
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>We're going to learn React</p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">Learn React</a>
-      </header>
-    </div>
+    <React.Fragment>
+      <TodoCounter completed={4} total={7}/>
+      <TodoSearch/>
+      <TodoList>
+        {defaultTodos.map(todo=>{
+          return (
+            <TodoItem key={todo.text} text={todo.text} completed={todo.completed}/>
+          )
+        })}
+      </TodoList>
+      <CreateTodoItem/>
+    </React.Fragment>
   );
 }
 

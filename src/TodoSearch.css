@@ -1,0 +1,26 @@
+.input-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+input{
+    background: #FFFCEE;
+    width: 80%;
+    margin: 24px 0;
+    padding: 8px 0;
+    color: #AA8800;
+    font-size: 18px;
+    border: none;
+    border-bottom: solid 2px #AA8800;
+    outline: none;
+    transition: .2s;
+}
+input:hover, input:focus{
+    border-bottom: solid 2px #FFCB00;
+    color: #443600;
+    font-size: 18px;
+    transition: .2s;
+}
+input::placeholder{
+    color: #AA8800;
+}
